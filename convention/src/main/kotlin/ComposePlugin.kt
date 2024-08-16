@@ -1,8 +1,10 @@
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.getByType
 import util.Settings
 
@@ -13,7 +15,8 @@ class ComposePlugin : Plugin<Project> {
                 apply("org.jetbrains.compose")
                 apply("org.jetbrains.kotlin.plugin.compose")
             }
-            val exts = extensions.getByType<BaseAppModuleExtension>()
+            val exts = extensions.findByType<ApplicationExtension>()
+                ?: extensions.findByType<LibraryExtension>() ?: return
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             with(exts) {
                 buildFeatures {
@@ -50,6 +53,8 @@ class ComposePlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("androidx-hilt-navigation-compose").get())
                 "implementation"(libs.findLibrary("glide-compose").get())
                 "implementation"(libs.findLibrary("androidx-constraintlayout-compose").get())
+                "implementation"(libs.findLibrary("sdp-compose").get())
+                "implementation"(libs.findLibrary("lottie-compose").get())
             }
         }
     }

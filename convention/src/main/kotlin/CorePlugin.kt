@@ -3,12 +3,14 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
 class CorePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("org.jetbrains.kotlin.kapt")
+                apply("org.jetbrains.kotlin.android")
+                apply("com.google.devtools.ksp")
                 apply("com.google.dagger.hilt.android")
                 apply("org.jetbrains.kotlin.plugin.parcelize")
             }
@@ -29,14 +31,19 @@ class CorePlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("circleimageview").get())
                 "implementation"(libs.findLibrary("eventbus").get())
                 "implementation"(libs.findLibrary("hilt-android").get())
-                "kapt"(libs.findLibrary("hilt-android-compiler").get())
+                "ksp"(libs.findLibrary("hilt-android-compiler").get())
                 "implementation"(libs.findLibrary("androidx-fragment-ktx").get())
                 "implementation"(libs.findLibrary("androidx-activity").get())
                 "implementation"(libs.findLibrary("androidx-activity-ktx").get())
                 "implementation"(libs.findLibrary("roundedimageview").get())
                 "implementation"(libs.findLibrary("glide").get())
-                "kapt"(libs.findLibrary("glide-compiler").get())
+                "implementation"(libs.findLibrary("lottie").get())
+                "ksp"(libs.findLibrary("glide-compiler").get())
             }
+
+//            extensions.getByType<KaptExtension>().apply {
+//                correctErrorTypes = true
+//            }
         }
     }
 }

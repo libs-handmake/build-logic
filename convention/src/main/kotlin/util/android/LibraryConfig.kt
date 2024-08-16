@@ -1,29 +1,24 @@
 package util.android
 
-import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import util.Settings
 
-fun ApplicationExtension.defaultConfig(project: Project) {
+fun LibraryExtension.defaultConfig(project: Project) {
     compileSdk = Settings.TARGET_SDK
     defaultConfig {
         minSdk = Settings.MIN_SDK
-        targetSdk = Settings.TARGET_SDK
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("proguard-rules.pro")
         vectorDrawables {
             useSupportLibrary = true
-        }
-        bundle {
-            language {
-                enableSplit = false
-            }
         }
     }
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"

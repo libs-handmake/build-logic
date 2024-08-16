@@ -11,12 +11,8 @@ import util.dependencies.CoreImplementation
 class ApplicationPlugin : ApplicationPlugin() {
     override fun Project.applyTarget(extension: ApplicationExtension, libs: VersionCatalog) {
         with(pluginManager) {
-            apply("org.jetbrains.kotlin.android")
             apply("com.hoangdv.core")
         }
         extension.defaultConfig(this)
-        project.extensions.getByType<KaptExtension>().apply {
-            correctErrorTypes = true
-        }
     }
 }

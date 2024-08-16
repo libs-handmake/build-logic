@@ -19,21 +19,28 @@ dependencies {
 gradlePlugin {
     plugins {
         register("hoangdv_application") {
-            id = "com.hoangdv.application"
+            id = libs.plugins.hoangdv.application.get().pluginId//"com.hoangdv.application"
             implementationClass = "ApplicationPlugin"
         }
     }
 
     plugins {
+        register("hoangdv_library") {
+            id = libs.plugins.hoangdv.library.get().pluginId//"com.hoangdv.library"
+            implementationClass = "LibraryPlugin"
+        }
+    }
+
+    plugins {
         register("hoangdv_core_impl") {
-            id = "com.hoangdv.core"
+            id = libs.plugins.hoangdv.core.get().pluginId//"com.hoangdv.core"
             implementationClass = "CorePlugin"
         }
     }
 
     plugins {
         register("hoangdv_jetpack_compose") {
-            id = "com.hoangdv.jetpack.compose"
+            id = libs.plugins.hoangdv.jetpack.compose.get().pluginId//"com.hoangdv.jetpack.compose"
             implementationClass = "ComposePlugin"
         }
     }
@@ -41,13 +48,14 @@ gradlePlugin {
     //third-party
     plugins {
         register("hoangdv_firebase_core") {
-            id = "com.hoangdv.firebase"
+            id = libs.plugins.hoangdv.firebase.core.get().pluginId//"com.hoangdv.firebase"
             implementationClass = "FirebasePlugin"
         }
     }
     plugins {
         register("hoangdv_firebase_crashlytics") {
-            id = "com.hoangdv.firebase.crashlytic"
+            id =
+                libs.plugins.hoangdv.firebase.crashlytic.get().pluginId //"com.hoangdv.firebase.crashlytic"
             implementationClass = "CrashlyticPlugin"
         }
     }
