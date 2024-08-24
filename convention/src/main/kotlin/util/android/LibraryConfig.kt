@@ -18,8 +18,7 @@ fun LibraryExtension.defaultConfig(project: Project) {
     }
     buildTypes {
         release {
-            isMinifyEnabled = true
-            isShrinkResources = false
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
