@@ -11,10 +11,6 @@ class FirebasePlugin : Plugin<Project> {
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
-            with(pluginManager) {
-                apply("com.google.gms.google-services")
-            }
-
             dependencies {
                 "implementation"(platform(libs.findLibrary("firebase-bom").get()))
                 "implementation"(libs.findLibrary("firebase-analytics").get())
