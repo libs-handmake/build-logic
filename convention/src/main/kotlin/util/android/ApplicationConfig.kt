@@ -9,6 +9,7 @@ import util.Settings
 fun ApplicationExtension.defaultConfig(project: Project) {
     compileSdk = Settings.TARGET_SDK
     defaultConfig {
+        applicationId = namespace
         minSdk = Settings.MIN_SDK
         targetSdk = Settings.TARGET_SDK
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -24,7 +25,6 @@ fun ApplicationExtension.defaultConfig(project: Project) {
     buildTypes {
         release {
             isMinifyEnabled = true
-            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )

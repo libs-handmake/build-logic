@@ -10,10 +10,10 @@ java {
 dependencies {
     compileOnly(libs.gradleAndroid)
     compileOnly(libs.koltinGradlePlugin)
-    implementation(libs.plugin.android)
-    implementation(libs.plugin.firebase.appdistribution)
-    implementation(libs.plugin.firebase.crashlytics)
-    implementation(libs.plugin.firebase.performance)
+    compileOnly(libs.plugin.android)
+//    implementation(libs.plugin.firebase.appdistribution)
+    compileOnly(libs.plugin.firebase.crashlytics)
+//    implementation(libs.plugin.firebase.performance)
 }
 
 gradlePlugin {
