@@ -10,9 +10,9 @@ class CorePlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.android")
-                apply("com.google.devtools.ksp")
                 apply("com.google.dagger.hilt.android")
                 apply("org.jetbrains.kotlin.plugin.parcelize")
+                apply("com.google.devtools.ksp")
             }
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
