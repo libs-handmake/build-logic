@@ -55,6 +55,7 @@ class ComposePlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("androidx-constraintlayout-compose").get())
                 "implementation"(libs.findLibrary("sdp-compose").get())
                 "implementation"(libs.findLibrary("lottie-compose").get())
+                "implementation"(libs.findLibrary("glide-compose").get())
             }
         }
     }
